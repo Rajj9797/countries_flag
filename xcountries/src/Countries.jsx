@@ -30,10 +30,14 @@ const Countries = () => {
   const [countries, setCountries] = useState([]);
 
   useEffect(() => {
+    try {
     fetch(APT)
       .then((res) => res.json())
       .then((data) => setCountries(data))
-      .catch((err) => console.error("Error fetching countries:", err));
+    } catch (error) {
+      console.error("Error fetching countries:", error);
+    }
+    //   .catch((err) => console.error("Error fetching countries:", err));
   }, []);
 
   console.log(countries);
